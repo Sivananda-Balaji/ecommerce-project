@@ -3,7 +3,11 @@ import Logo from "../../assets/images/logo.png";
 import MobileLogo from "../../assets/images/mobile-logo.png";
 import "./CheckoutHeader.css";
 
-const CheckoutHeader = () => {
+const CheckoutHeader = ({ cart }) => {
+  const totalQuantity = cart.reduce(
+    (acc, cartItem) => acc + cartItem.quantity,
+    0
+  );
   return (
     <div className="checkout-header">
       <div className="header-content">
@@ -17,7 +21,7 @@ const CheckoutHeader = () => {
         <div className="checkout-header-middle-section">
           Checkout (
           <Link className="return-to-home-link" to="/">
-            3 items
+            {totalQuantity} Items
           </Link>
           )
         </div>
