@@ -7,7 +7,7 @@ export const OrderDetailsGrid = ({ order }) => {
     <div className="order-details-grid">
       {order.products.map((productItem) => {
         return (
-          <Fragment key={productItem.id}>
+          <Fragment key={productItem.productId}>
             <div className="product-image-container">
               <img src={productItem.product.image} />
             </div>
@@ -31,7 +31,7 @@ export const OrderDetailsGrid = ({ order }) => {
             </div>
 
             <div className="product-actions">
-              <Link to="/tracking">
+              <Link to={`/tracking/${order.id}/${productItem.productId}`}>
                 <button className="track-package-button button-secondary">
                   Track package
                 </button>
