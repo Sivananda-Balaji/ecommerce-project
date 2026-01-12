@@ -2,7 +2,7 @@ import { DeliveryOptions } from "./DeliveryOptions";
 import { CartItemsDetails } from "./CartItemsDetails";
 import { DeliveryDate } from "./DeliveryDate";
 
-export const OrderSummary = ({ cart, deliveryOptions }) => {
+export const OrderSummary = ({ cart, deliveryOptions, loadCartItems }) => {
   return (
     <div className="order-summary">
       {deliveryOptions.length > 0 &&
@@ -14,10 +14,14 @@ export const OrderSummary = ({ cart, deliveryOptions }) => {
                 deliveryOptions={deliveryOptions}
               />
               <div className="cart-item-details-grid">
-                <CartItemsDetails cartItem={cartItem} />
+                <CartItemsDetails
+                  cartItem={cartItem}
+                  loadCartItems={loadCartItems}
+                />
                 <DeliveryOptions
                   cartItem={cartItem}
                   deliveryOptions={deliveryOptions}
+                  loadCartItems={loadCartItems}
                 />
               </div>
             </div>

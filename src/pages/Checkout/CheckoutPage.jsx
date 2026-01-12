@@ -5,7 +5,7 @@ import axios from "axios";
 import { OrderSummary } from "./OrderSummary";
 import { PaymentSummary } from "./PaymentSummary";
 
-const CheckoutPage = ({ cart }) => {
+const CheckoutPage = ({ cart, loadCartItems }) => {
   const [deliveryOptions, setDeliveryOptions] = useState([]);
   const [paymentSummary, setPaymentSummary] = useState(null);
   useEffect(() => {
@@ -22,7 +22,7 @@ const CheckoutPage = ({ cart }) => {
     };
     fetchDeliveryptions();
     fetchPaymentSummary();
-  }, []);
+  }, [cart]);
   return (
     <>
       <title>Checkout</title>
@@ -32,8 +32,15 @@ const CheckoutPage = ({ cart }) => {
         <div className="page-title">Review your order</div>
 
         <div className="checkout-grid">
-          <OrderSummary cart={cart} deliveryOptions={deliveryOptions} />
-          <PaymentSummary paymentSummary={paymentSummary} />
+          <OrderSummary
+            cart={cart}
+            deliveryOptions={deliveryOptions}
+            loadCartItems={loadCartItems}
+          />
+          <PaymentSummary
+            paymentSummary={paymentSummary}
+            loadCartItems={loadCartItems}
+          />
         </div>
       </div>
     </>

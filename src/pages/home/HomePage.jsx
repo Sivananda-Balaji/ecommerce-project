@@ -4,7 +4,7 @@ import Header from "../../components/Header";
 import "./HomePage.css";
 import { ProductsGrid } from "./ProductsGrid";
 
-const HomePage = ({ cart }) => {
+const HomePage = ({ cart, loadCartItems }) => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
     const fetchproducts = async () => {
@@ -19,7 +19,7 @@ const HomePage = ({ cart }) => {
       <Header cart={cart} />
       <link rel="icon" href="images/icons/home-favicon.png" />
       <div className="home-page">
-        <ProductsGrid products={products} />
+        <ProductsGrid products={products} loadCartItems={loadCartItems} />
       </div>
     </>
   );
