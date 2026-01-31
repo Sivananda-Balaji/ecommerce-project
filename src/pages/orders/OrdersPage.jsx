@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import { OrdersGrid } from "./ordersGrid";
 
-const OrdersPage = ({ cart }) => {
+const OrdersPage = ({ cart, loadCartItems }) => {
   const [orders, setOrders] = useState([]);
   useEffect(() => {
     const fetchOrders = async () => {
@@ -22,7 +22,7 @@ const OrdersPage = ({ cart }) => {
 
       <div className="orders-page">
         <div className="page-title">Your Orders</div>
-        <OrdersGrid orders={orders} />
+        <OrdersGrid orders={orders} loadCartItems={loadCartItems} />
       </div>
     </>
   );
